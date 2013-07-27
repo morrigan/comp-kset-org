@@ -2,4 +2,5 @@
 *.pot
 *.pyc
 *.py~
-local_settings.py
+comp/comp/settings/prod.py
+comp/comp/settings/local.py
