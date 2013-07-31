@@ -9,7 +9,7 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'comp',
+        'NAME': 'compdb.db',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',

@@ -1,6 +1,14 @@
+from os.path import join, abspath,dirname
+import os
+
+ROOT_DIR = abspath(join(dirname(__file__), '..'))
+
+def ABS_PATH(*args):
+    return os.path.join(ROOT_DIR, *args)
+
 ADMINS = (
-    ('Josip Grabić', 'grabich@kset.org'),
-    ('Belma Gutlić', 'morrigan@kset.org'),
+    ('Josip Grabic', 'grabich@kset.org'),
+    ('Belma Gutlic', 'morrigan@kset.org'),
 )
 
 MANAGERS = ADMINS
