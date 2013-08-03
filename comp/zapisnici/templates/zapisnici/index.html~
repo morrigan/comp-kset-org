@@ -1,7 +1,8 @@
 {% if zapisnik_list %}
     <ul>
         {% for zapisnik in zapisnik_list %}
-        <li><a href="{% url 'zapisnici:zapisnik' zapisnik.id %}">{{ zapisnik.zap_sadrzaj }}</a></li>
+        <li><a href="{% url 'zapisnici:zapisnik' zapisnik.id %}">{{ zapisnik.zap_date }}</a></li>
+        <li>{{ zapisnik.zap_sadrzaj }}</li>
         {% endfor %}
     </ul>
 {% else %}

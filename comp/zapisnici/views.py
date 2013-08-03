@@ -8,9 +8,7 @@ class IndexView(generic.ListView):
     template_name = 'zapisnici/index.html'
 
     def get_queryset(self):
-        return Zapisnik.objects.filter(
-                zap_date__lte=timezone.now()
-                ).order_by('-zap_date')[:5]
+        return Zapisnik.objects.order_by('-zap_date')[:5]
 
 class ZapisnikView(generic.DetailView):
     model = Zapisnik
