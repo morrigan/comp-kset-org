@@ -9,3 +9,6 @@ class Zapisnik(models.Model):
     def __unicode__(self):
         return self.zap_sadrzaj # Promijeniti u nesto pametnije
 
+    class Meta:
+        verbose_name_plural = "zapisnici"
+
