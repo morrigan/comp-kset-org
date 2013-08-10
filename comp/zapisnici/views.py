@@ -5,8 +5,6 @@ from django.views import generic
 from django.utils import timezone
 
 class IndexView(generic.ListView):
-    template_name = 'zapisnici/index.html'
-
     def get_queryset(self):
         return Zapisnik.objects.order_by('-zap_date')[:5]
 
