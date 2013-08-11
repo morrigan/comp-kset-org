@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^zapisnici/', include('zapisnici.urls', namespace="zapisnici")),
 )
 
-urlpatterns += patterns('django.contrib.flatpages.views', 
-    url(r'^about/$', 'flatpage', {'url': '/about/'}, name='about'),
+urlpatterns += patterns('django.contrib.flatpages.views',
+    url(r'^about/$', 'flatpage', {'url': '/about/'}, name='comp_about'), 
+    url(r'^kontakt/$', 'flatpage', {'url': '/kontakt/'}, name='comp_kontakt'), 
 )
