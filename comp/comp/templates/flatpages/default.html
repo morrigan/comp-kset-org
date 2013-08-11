@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}
 {{ flatpage.title }}
@@ -6,5 +7,6 @@
 
 {% block content %}
 {{ flatpage.content }}
+<img src = "{% static 'images/blinking_cursor.gif' %}" />
 {% endblock %}
 
