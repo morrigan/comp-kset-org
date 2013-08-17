@@ -1,5 +1,6 @@
 from os.path import join, abspath,dirname
 import os
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 ROOT_DIR = abspath(join(dirname(__file__), '..'))
 
@@ -102,6 +103,10 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+        'django.core.context_processors.request',
 )
 
 INSTALLED_APPS = (
