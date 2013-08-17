@@ -9,9 +9,9 @@
         <body>
                 <div id="user">
                         {% if user.is_authenticated %}
-                        {{ user.username }} <a href="logout/"> logout </a>
+                        {{ user.username }} <a href="{% url 'auth_logout' %}?next={% firstof request.path '/' %}"> logout </a>
                         {% else %}
-                        <a href="login/"> login </a>
+                        <a href="{% url 'auth_login' %}?next={% firstof request.path '/' %}"> login </a>
                         {% endif %}
                 </div>
                         
