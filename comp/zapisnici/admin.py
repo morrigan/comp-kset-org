@@ -4,7 +4,7 @@ from zapisnici.models import Zapisnik
 from django.db import models
 from tinymce.widgets import TinyMCE
 
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.conf import settings
 
 class ZapisnikAdmin(admin.ModelAdmin):
@@ -13,8 +13,11 @@ class ZapisnikAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         if obj.mail_notifikacija == True:
-            send_mail('Zapisnik sa sastanka', obj.zap_sadrzaj, settings.EMAIL_HOST_USER, ['sendto@mail.com'])
-       
+            subject, from_email, to = 'Zapisnik sa sastanka', settings.EMAIL_HOST_USER, 'sendto@mail.com'
+            msg = EmailMessage(subject, obj.zap_sadrzaj, from_email, [to])
+            msg.content_subtype = "html"
+            msg.send()
+
         super(ZapisnikAdmin, self).save_model(request, obj, form, change)
 
 
