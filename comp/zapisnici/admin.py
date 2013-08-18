@@ -14,7 +14,8 @@ class ZapisnikAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if obj.mail_notifikacija == True:
             subject, from_email, to = 'Zapisnik sa sastanka', settings.EMAIL_HOST_USER, 'sendto@mail.com'
-            msg = EmailMessage(subject, obj.zap_sadrzaj, from_email, [to])
+            html_message = '<b>'+str(obj.zap_date)+'</b>'+'<p><b>Prisutni: </b></p>'+obj.prisutni+'<p> <b>Sadrzaj:</b> '+obj.zap_sadrzaj+'</p>'
+            msg = EmailMessage(subject, html_message, from_email, [to])
             msg.content_subtype = "html"
             msg.send()
 
