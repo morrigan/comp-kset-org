@@ -5,25 +5,28 @@ Login
 {% endblock %}
 
 {% block content %}
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+<p>user@host:~$ ssh comp.kset.org</p>
+{% comment %} <p>comp@kset.org:~$ ssh comp.kset.org</p> {% endcomment %}
 
-<form method="post" action="{% url 'auth_login' %}">
+<form method="post" action="{% url 'auth_login' %}" id="login-form">
         {% csrf_token %}
         <table>
                 <tr>
-                        <td>{{ form.username.label_tag }}</td>
+                        <td>username:</td>
                         <td>{{ form.username }}</td>
                 </tr>
                 <tr>
-                        <td>{{ form.password.label_tag }}</td>
+                        <td>password:</td>
                         <td>{{ form.password }}</td>
                 </tr>
         </table>
 
-        <input type="submit" value="login" />
+        <input type="submit" value="login"/>
         <input type="hidden" name="next" value="{% firstof next '/' %}" /> 
 </form>
+
+{% if form.errors %}
+<p>Permission denied, please try again.</p>
+{% endif %}
 
 {% endblock %}
