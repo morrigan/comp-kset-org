@@ -8,7 +8,7 @@ class Zapisnik(models.Model):
     mail_notifikacija = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return self.zap_sadrzaj # Promijeniti u nesto pametnije
+        return self.zap_sadrzaj[:64]
 
     class Meta:
         verbose_name_plural = "zapisnici"
