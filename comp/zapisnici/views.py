@@ -23,13 +23,3 @@ def detail(request, pk):
     context = {'zapisnik': get_object_or_404(Zapisnik, pk=pk)}
     template = 'zapisnici/detail.html'
     return render(request, template, context)
-
-#class IndexView(LoginRequiredMixin, ListView):
-#    paginate_by = 10
-#
-#    def get_queryset(self):
-#        return Zapisnik.objects.order_by('-zap_date')
-#
-#class ZapisnikView(LoginRequiredMixin, DetailView):
-#    model = Zapisnik
-
