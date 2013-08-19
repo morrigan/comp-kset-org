@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^zapisnici/', include('zapisnici.urls', namespace="zapisnici")),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^login/$', redirect_if_logged_in(login), name='auth_login'),
+    url(r'^login/$', redirect_if_logged_in(login), {'template_name': 'login.html'}, name='auth_login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='auth_logout'),
 )
 
