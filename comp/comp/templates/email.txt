@@ -1,0 +1,5 @@
+Datum: {{ datum }}
+
+Prisutni: {{ prisutni }}
+
+Zapisnik: {{ sadrzaj }}
