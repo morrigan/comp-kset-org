@@ -16,7 +16,7 @@ def index(request):
 
     return render(request, template, {'news_list': news})
 
-def detail(request, pk):
+def detail(request, pk, slug):
     context = {'news': get_object_or_404(News, pk=pk)}
     template = 'news/detail.html'
     return render(request, template, context)

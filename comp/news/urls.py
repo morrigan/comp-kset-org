@@ -3,5 +3,5 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = patterns('news.views',
         url(r'^$', 'index', name='index'), 
-        url(r'^(?P<pk>\d+)/$', 'detail', name='news'), 
+        url(r'^(?P<pk>\d+)/(?P<slug>[-\w\d]+)/$', 'detail', name='news'), 
 )

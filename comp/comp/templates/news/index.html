@@ -6,7 +6,7 @@
 {% if news_list %}
     <ul>
         {% for news in news_list %}
-        <li class="news"><a href="{% url 'news:news' news.id %}"><h2>{{ news.title }}</h2></a>
+        <li class="news"><a href="{% url 'news:news' news.id news.slug %}"><h2>{{ news.title }}</h2></a>
             <p><strong> {{ news.author }}, {{ news.date }} </strong></p>
             <p><strong> </strong>{{ news.body|truncatewords_html:"40"|safe }}</p>
        </li>
