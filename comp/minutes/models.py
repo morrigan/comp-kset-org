@@ -2,6 +2,7 @@ from django.db import models
 
 class Minutes(models.Model):
     date = models.DateTimeField('Meeting date')
+    slug = models.SlugField()
     content = models.TextField('Minutes content')
     members_present = models.TextField('Present members')
     mail_notification = models.BooleanField(default=False)

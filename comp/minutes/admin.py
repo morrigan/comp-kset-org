@@ -14,6 +14,9 @@ class MinutesAdmin(admin.ModelAdmin):
     list_display = ('date', 'members_present', 'content')
 
     def save_model(self, request, obj, form, change):
+        if not change:
+            obj.slug = 'zapisnik-' + obj.date.strftime('%d-%m-%Y')
+
         if obj.mail_notification== True:
             plaintext = get_template('email.txt')
             htmltext = get_template('email.html')
@@ -21,7 +24,7 @@ class MinutesAdmin(admin.ModelAdmin):
                 'members_present' : obj.members_present,
                 'content' : obj.content})
 
-            subject, from_email, to = 'Zapisnik sastanka {}.{}.{}.'.format(obj.date.day, obj.date.month, obj.date.year), settings.EMAIL_HOST_USER, settings.EMAIL_TO_ADDRESS 
+            subject, from_email, to = 'Zapisnik sastanka {}'.format(obj.date.strftime('%x')), settings.EMAIL_HOST_USER, settings.EMAIL_TO_ADDRESS 
             text_content = plaintext.render(d)
             html_content = htmltext.render(d)
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])

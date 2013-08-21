@@ -19,7 +19,7 @@ def index(request):
     return render(request, template, {'minutes_list': minutes})
 
 @login_required
-def detail(request, pk):
+def detail(request, pk, slug):
     context = {'minutes': get_object_or_404(Minutes, pk=pk)}
     template = 'minutes/detail.html'
     return render(request, template, context)
