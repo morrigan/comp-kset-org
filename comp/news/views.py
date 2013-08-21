@@ -1,14 +1,22 @@
-from django.http import HttpResponse
-from news.models import News
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
-from django.views import generic
-from django.utils import timezone
+from models import News 
 
-class IndexView(generic.ListView):
-    paginate_by = 10
+def index(request):
+    template = 'news/index.html'
+    news_list = News.objects.order_by('-date')
+    paginator = Paginator(news_list, 10)
+    page = request.GET.get('page')
+    try:
+        news = paginator.page(page)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+        news = paginator.page(paginator.num_pages)
 
-    def get_queryset(self):
-        return News.objects.order_by('date')
+    return render(request, template, {'news_list': news})
 
-class NewsView(generic.DetailView):
-    model = News
+def detail(request, pk):
+    context = {'news': get_object_or_404(News, pk=pk)}
+    template = 'news/detail.html'
+    return render(request, template, context)
