@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'south',
     'zapisnici',
     'tinymce',
+    'news'
 )
 
 # A sample logging configuration. The only tangible logging

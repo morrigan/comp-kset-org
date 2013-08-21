@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} News {{ news.date }} {% endblock %}
+
+{% block content %}
+
+<h1> {{ news.title|safe }}</h1>
+<p> <strong>{{ news.author|safe }}, {{ news.date }} </strong></p>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p>{{ news.body|safe }} </p>
+
+{% endblock %}
