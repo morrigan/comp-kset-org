@@ -7,8 +7,9 @@ from django.conf import settings
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'author','body', 'date')
     fieldsets = (
-        (None, { 'fields': ['title', 'body']} ),
+        (None, { 'fields': ['title', 'slug', 'body']} ),
     )
+    prepopulated_fields = {'slug': ("title",)}
 
     def save_model(self, request, obj, form, change):
         if not change:
