@@ -1,5 +1,3 @@
-Datum: {{ datum }}
+Prisutni: {{ members_present }}
 
-Prisutni: {{ prisutni }}
-
-Zapisnik: {{ sadrzaj }}
+Zapisnik: {{ content }}
