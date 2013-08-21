@@ -23,7 +23,7 @@ class ZapisnikAdmin(admin.ModelAdmin):
                 'prisutni' : obj.prisutni,
                 'sadrzaj' : obj.zap_sadrzaj })
 
-            subject, from_email, to = 'Zapisnik sa sastanka', settings.EMAIL_HOST_USER, 'sendto@mail.com'
+            subject, from_email, to = 'Zapisnik sa sastanka', settings.EMAIL_HOST_USER, settings.EMAIL_TO_ADDRESS 
             text_content = plaintext.render(d)
             html_content = htmltext.render(d)
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
