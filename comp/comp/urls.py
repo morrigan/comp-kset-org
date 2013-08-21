@@ -6,8 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^zapisnici/', include('zapisnici.urls', namespace="zapisnici")),
-    url(r'^news/', include('news.urls', namespace="news")),
+    url(r'^zapisnici/', include('minutes.urls', namespace="minutes")),
+    url(r'^vijesti/', include('news.urls', namespace="news")),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
