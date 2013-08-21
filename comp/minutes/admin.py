@@ -18,10 +18,10 @@ class MinutesAdmin(admin.ModelAdmin):
             plaintext = get_template('email.txt')
             htmltext = get_template('email.html')
             d = Context({ 'date' : obj.date,
-                'present_members' : obj.members_present,
+                'members_present' : obj.members_present,
                 'content' : obj.content})
 
-            subject, from_email, to = 'Zapisnik sastanka {}'.format(obj.date), settings.EMAIL_HOST_USER, settings.EMAIL_TO_ADDRESS 
+            subject, from_email, to = 'Zapisnik sastanka {}.{}.{}.'.format(obj.date.day, obj.date.month, obj.date.year), settings.EMAIL_HOST_USER, settings.EMAIL_TO_ADDRESS 
             text_content = plaintext.render(d)
             html_content = htmltext.render(d)
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
