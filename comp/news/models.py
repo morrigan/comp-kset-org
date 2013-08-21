@@ -4,6 +4,7 @@ from tinymce.widgets import TinyMCE
 
 class News(models.Model):
     title = models.CharField(max_length=60)
+    slug = models.SlugField()
     author = models.ForeignKey(User)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
