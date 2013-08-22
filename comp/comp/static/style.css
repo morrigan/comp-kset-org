@@ -36,7 +36,7 @@ p img {
     padding: 0px;
 }
 
-#login-form input[type="text"], input[type="password"] {
+#login-form input[type="text"], input[type="password"], input[type="submit"] {
     font-family:     "Courier New",
                     Courier,
                     monospace;
@@ -48,17 +48,8 @@ p img {
 }
 
 #login-form input[type="submit"] {
-    font-family:     "Courier New",
-                    Courier,
-                    monospace;
-    background: transparent;
-    color: #FFF;
     border: 1px solid #FFF;
-    font-size: 16px;
-
 }
-
-
 
 #user {
     margin-right: auto;
@@ -79,6 +70,17 @@ p img {
     margin-bottom: auto;
 }
 
+.news {
+        border-bottom: 2px dashed #FFF;
+}
+
+.subtitle {
+        font-size: 12px;
+}
+
+.news a {
+        text-decoration: none;
+}
 
 
 #header {
