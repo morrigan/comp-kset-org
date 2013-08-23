@@ -10,33 +10,23 @@ from django.template import Context
 from django.conf import settings
 
 class MinutesAdmin(admin.ModelAdmin):
-    fields = ['date', 'content', 'members_present', 'mail_notification']
+    fields = ('date', 'content', 'members_present', 'mail_notification')
     list_display = ('date', 'members_present', 'content')
+    formfield_overrides = {
+            models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
+        }
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return ('mail_notification',) + self.readonly_fields
+        return self.readonly_fields
 
     def save_model(self, request, obj, form, change):
         if not change:
             obj.slug = 'zapisnik-' + obj.date.strftime('%d-%m-%Y')
-
-        if obj.mail_notification== True:
-            plaintext = get_template('email.txt')
-            htmltext = get_template('email.html')
-            d = Context({ 'date' : obj.date,
-                'members_present' : obj.members_present,
-                'content' : obj.content})
-
-            subject, from_email, to = 'Zapisnik sastanka {}'.format(obj.date.strftime('%x')), settings.EMAIL_HOST_USER, settings.EMAIL_TO_ADDRESS 
-            text_content = plaintext.render(d)
-            html_content = htmltext.render(d)
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
-
         super(MinutesAdmin, self).save_model(request, obj, form, change)
 
 
-    formfield_overrides = {
-            models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
-        }
 
 admin.site.register(Minutes, MinutesAdmin)
 
