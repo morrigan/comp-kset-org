@@ -1,11 +1,12 @@
 {% load staticfiles %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
         <head>
-                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta charset=utf-8">
+                <meta name="description" content="Stranice računarske sekcije KSET-a">
                 <title>{% block title %}comp.kset.org {% endblock %}</title>
-                <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-                <link rel="icon" type="image/png" href="/media/images/favicon.png" />
+                <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+                <link rel="icon" type="image/png" href="/media/images/favicon.png">
         </head>
         <body>
                 <div id="user">
@@ -20,7 +21,7 @@
                 </div>
                         
 
-                <div id="header">
+                <header id="header">
 <pre>
                                                                      ===============
                             _             _                         ======== ========
@@ -37,26 +38,26 @@
 
 
 </pre>          
-                </div>
+                </header>
                 <div id="container">
                         <div id="content">
-                                <div id="menu">
+                                <nav id="menu">
                                         <ul>
                                                 <a href='/'><li>127.0.0.1</li></a>
                                                 <a href='/vijesti/'><li>vijesti</li></a>
                                                 <a href='/zapisnici/'><li>zapisnici</li></a>
                                                 <a href='/kontakt/'><li>kontakt</li></a>
                                         </ul>   
-                                </div>
-                                <div id="article">
+                                </nav>
+                                <article id="article">
                                         {% block content %}
                                         {% endblock %}
-                                </div>
+                                </article>
                         </div>
-                        <div id="footer">
-                                comp@kset.org Freeeendeeeeeee!!!
-                                <br> &copy {% now 'Y' %} 
-                        </div>
+                        <footer id="footer">
+                                <a href="http://www.kset.org">KSET</a> - <b>K</b>lub <b>S</b>tudenata <b>E</b>lektro<b>T</b>ehnike
+                                <br> comp@kset.org
+                        </footer>
                 </div>
         </body>
 </html>
